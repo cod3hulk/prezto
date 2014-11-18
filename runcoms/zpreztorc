@@ -170,6 +170,10 @@ alias vi=/usr/local/bin/vim
 #
 export VISUAL=vi
 export EDITOR=$VISUAL
-export PATH="$HOME/.jenv/bin:$HOME/.rbenv/shims:$PATH"
-eval "$(rbenv init -)"
+# jenv
 eval "$(jenv init -)"
+JENV_HOME="$HOME/.jenv/bin"
+# rbenv
+eval "$(rbenv init -)"
+RBENV_HOME="$HOME/.rbenv/shims"
+export PATH="$JENV_HOME:$RBENV_HOME:$PATH"
