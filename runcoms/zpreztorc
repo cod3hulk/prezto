@@ -159,9 +159,17 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 #
+
 #
 # Alias
 #
-alias vi=vim
+alias vi=/usr/local/bin/vim
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home
+#
+# Export
+#
+export VISUAL=vi
+export EDITOR=$VISUAL
+export PATH="$HOME/.jenv/bin:$HOME/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
+eval "$(jenv init -)"
