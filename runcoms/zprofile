@@ -84,4 +84,4 @@ export GRADLE_OPTS="-Dorg.gradle.daemon=true -Dorg.gradle.parralel-threads=2 -Do
 #
 # Java
 #
-export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
+# export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
