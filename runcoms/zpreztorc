@@ -164,7 +164,7 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 # Alias
 #
 alias vi=/usr/local/bin/vim
-alias dfiles-up='~/dotfiles/dotfiles.sh update'
+alias dfup='~/dotfiles/dotfiles.sh update'
 
 #
 # Export
