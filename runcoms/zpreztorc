@@ -178,3 +178,5 @@ JENV_HOME="$HOME/.jenv/bin"
 eval "$(rbenv init -)"
 RBENV_HOME="$HOME/.rbenv/shims"
 export PATH="$JENV_HOME:$RBENV_HOME:$PATH"
+
+source ~/.oracle_client

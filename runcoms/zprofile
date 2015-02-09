@@ -79,7 +79,7 @@ fi
 #
 # Gradle
 #
-export GRADLE_OPTS="-Dorg.gradle.daemon=true -Dorg.gradle.parralel-threads=2 -Dorg.gradle.jvmargs='-Xmx4096m -XX:MaxPermSize=4096m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -Djava.awt.headless=true'"
+export GRADLE_OPTS="-Dorg.gradle.daemon=true -Dorg.gradle.parralel-threads=4 -Dorg.gradle.jvmargs='-Xmx4096m -XX:MaxPermSize=4096m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -Djava.awt.headless=true'"
 
 #
 # Java
