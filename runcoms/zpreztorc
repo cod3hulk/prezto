@@ -169,7 +169,7 @@ alias dfup='~/dotfiles/dotfiles.sh update'
 #
 # Export
 #
-export VISUAL=vi
+export VISUAL=/usr/local/bin/vim
 export EDITOR=$VISUAL
 # jenv
 eval "$(jenv init -)"
@@ -177,6 +177,7 @@ JENV_HOME="$HOME/.jenv/bin"
 # rbenv
 eval "$(rbenv init -)"
 RBENV_HOME="$HOME/.rbenv/shims"
-export PATH="$JENV_HOME:$RBENV_HOME:$PATH"
+BREW_HOME="$HOME/usr/local/bin/"
+export PATH="$JENV_HOME:$RBENV_HOME:$BREW_HOME:$PATH"
 
 source ~/.oracle_client
