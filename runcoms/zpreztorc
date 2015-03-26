@@ -180,4 +180,3 @@ RBENV_HOME="$HOME/.rbenv/shims"
 BREW_HOME="$HOME/usr/local/bin/"
 export PATH="$JENV_HOME:$RBENV_HOME:$BREW_HOME:$PATH"
 
-source ~/.oracle_client
