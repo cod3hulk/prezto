@@ -178,5 +178,6 @@ JENV_HOME="$HOME/.jenv/bin"
 eval "$(rbenv init -)"
 RBENV_HOME="$HOME/.rbenv/shims"
 BREW_HOME="$HOME/usr/local/bin/"
+export GOPATH="$(brew --prefix go)"
 export PATH="$JENV_HOME:$RBENV_HOME:$BREW_HOME:$PATH"
 
