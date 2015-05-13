@@ -180,4 +180,3 @@ RBENV_HOME="$HOME/.rbenv/shims"
 BREW_HOME="$HOME/usr/local/bin/"
 export GOPATH="$(brew --prefix go)"
 export PATH="$JENV_HOME:$RBENV_HOME:$BREW_HOME:$PATH"
-
