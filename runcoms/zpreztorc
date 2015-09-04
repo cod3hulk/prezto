@@ -13,7 +13,7 @@
 # zstyle ':prezto:*:*' case-sensitive 'yes'
 
 # Color output (auto set to 'no' on dumb terminals).
-    zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:*:*' color 'yes'
 
 # Set the Zsh modules to load (man zshmodules).
 # zstyle ':prezto:load' zmodule 'attr' 'stat'
@@ -42,7 +42,7 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'emacs'
+# zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
 # zstyle ':prezto:module:editor' dot-expansion 'yes'
@@ -158,7 +158,7 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
-#
+
 
 #
 # Alias
@@ -171,12 +171,21 @@ alias dotfiles-up='~/dotfiles/dotfiles.sh update'
 #
 export VISUAL=/usr/local/bin/vim
 export EDITOR=$VISUAL
+
 # jenv
 eval "$(jenv init -)"
 JENV_HOME="$HOME/.jenv/bin"
+export PATH="$JENV_HOME:$PATH"
+
 # rbenv
 eval "$(rbenv init -)"
 RBENV_HOME="$HOME/.rbenv/shims"
+export PATH="$RBENV_HOME:$PATH"
+
+# brew
 BREW_HOME="$HOME/usr/local/bin/"
+export PATH="$BREW_HOME:$PATH"
+
+# go
 export GOPATH="$(brew --prefix go)"
-export PATH="$JENV_HOME:$RBENV_HOME:$BREW_HOME:$PATH"
+

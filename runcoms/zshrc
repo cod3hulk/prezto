@@ -24,3 +24,5 @@ docker-up() {
     eval `boot2docker shellinit 2>/dev/null`
 }
 
+bindkey -M viins 'jj' vi-cmd-mode
+
