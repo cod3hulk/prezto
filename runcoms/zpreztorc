@@ -159,33 +159,3 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
-
-#
-# Alias
-#
-alias vi=/usr/local/bin/vim
-alias dotfiles-up='~/dotfiles/dotfiles.sh update'
-
-#
-# Export
-#
-export VISUAL=/usr/local/bin/vim
-export EDITOR=$VISUAL
-
-# jenv
-eval "$(jenv init -)"
-JENV_HOME="$HOME/.jenv/bin"
-export PATH="$JENV_HOME:$PATH"
-
-# rbenv
-eval "$(rbenv init -)"
-RBENV_HOME="$HOME/.rbenv/shims"
-export PATH="$RBENV_HOME:$PATH"
-
-# brew
-BREW_HOME="$HOME/usr/local/bin/"
-export PATH="$BREW_HOME:$PATH"
-
-# go
-export GOPATH="$(brew --prefix go)"
-

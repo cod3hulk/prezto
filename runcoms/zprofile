@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='/usr/local/bin/vim'
+export VISUAL="$EDITOR"
 export PAGER='less'
 
 #
@@ -76,12 +76,23 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
-#
-# Gradle
-#
+# gradle
 export GRADLE_OPTS="-Dorg.gradle.daemon=true -Dorg.gradle.parralel-threads=4 -Dorg.gradle.jvmargs='-Xmx4096m -XX:MaxPermSize=4096m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -Djava.awt.headless=true'"
 
-#
-# Java
-#
-# export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
+# jenv
+eval "$(jenv init -)"
+JENV_HOME="$HOME/.jenv/bin"
+export PATH="$JENV_HOME:$PATH"
+
+# rbenv
+eval "$(rbenv init -)"
+RBENV_HOME="$HOME/.rbenv/shims"
+export PATH="$RBENV_HOME:$PATH"
+
+# brew
+BREW_HOME="$HOME/usr/local/bin/"
+export PATH="$BREW_HOME:$PATH"
+
+# go
+export GOPATH="$(brew --prefix go)"
+
