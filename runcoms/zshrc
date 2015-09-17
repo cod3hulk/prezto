@@ -24,12 +24,7 @@ docker-up() {
     eval `boot2docker shellinit 2>/dev/null`
 }
 
-bindkey -M viins 'jj' vi-cmd-mode
-
-# alias
-alias vi=/usr/local/bin/vim
-alias ws='cd /Users/tave/workshop'
-alias vimrc='vi /Users/tave/.vimrc'
-alias dotfiles-up='~/dotfiles/dotfiles.sh update'
-alias tmuxk='tmux kill-session -t'
-
+# aliases
+if [[ -s "${ZDOTDIR:-$HOME}/.aliases"  ]]; then
+    source "${ZDOTDIR:-$HOME}/.aliases"
+fi
