@@ -28,3 +28,9 @@ docker-up() {
 if [[ -s "${ZDOTDIR:-$HOME}/.aliases"  ]]; then
     source "${ZDOTDIR:-$HOME}/.aliases"
 fi
+
+# exports
+if [[ -s "${ZDOTDIR:-$HOME}/.exports"  ]]; then
+    source "${ZDOTDIR:-$HOME}/.exports"
+fi
+
