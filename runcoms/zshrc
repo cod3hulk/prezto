@@ -37,3 +37,7 @@ fi
 
 # added by travis gem
 [ -f /Users/tave/.travis/travis.sh ] && source /Users/tave/.travis/travis.sh
+
+# vi 
+bindkey -M viins 'jj' vi-cmd-mode
+
