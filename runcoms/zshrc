@@ -4,6 +4,14 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+#
+
+# disable autocorrect
+unsetopt correct_all
+unsetopt correct
+
+# add support for thefuck
+eval "$(thefuck --alias)"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -27,6 +35,9 @@ docker-up() {
 # aliases
 if [[ -s "${ZDOTDIR:-$HOME}/.aliases"  ]]; then
     source "${ZDOTDIR:-$HOME}/.aliases"
+fi
+if [[ -s "${ZDOTDIR:-$HOME}/.aliases.local"  ]]; then
+    source "${ZDOTDIR:-$HOME}/.aliases.local"
 fi
 
 # exports
