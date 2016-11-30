@@ -10,9 +10,6 @@
 unsetopt correct_all
 unsetopt correct
 
-# add support for thefuck
-eval "$(thefuck --alias)"
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
     source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -22,15 +19,6 @@ fi
 
 # disable wildcard match for zsh. does not work well with wildcard search
 unsetopt nomatch
-
-# init docker
-eval `boot2docker shellinit 2>/dev/null`
-docker-up() {
-    if [ $(boot2docker status) != 'running' ]; then
-        boot2docker up
-    fi
-    eval `boot2docker shellinit 2>/dev/null`
-}
 
 # aliases
 if [[ -s "${ZDOTDIR:-$HOME}/.aliases"  ]]; then
@@ -47,7 +35,7 @@ fi
 
 
 # added by travis gem
-[ -f /Users/tave/.travis/travis.sh ] && source /Users/tave/.travis/travis.sh
+#[ -f /Users/tave/.travis/travis.sh ] && source /Users/tave/.travis/travis.sh
 
 # vi 
 bindkey -M viins 'jj' vi-cmd-mode
@@ -55,4 +43,7 @@ bindkey "^R" history-incremental-search-backward
 
 # autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh  ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+EDITOR='mvim -f'
+VISUAL='mvim -f'
 
