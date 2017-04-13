@@ -90,7 +90,7 @@ RBENV_HOME="$HOME/.rbenv/shims"
 export PATH="$RBENV_HOME:$PATH"
 
 # brew
-BREW_HOME="$HOME/usr/local/bin/"
+BREW_HOME="$HOME/usr/local/bin"
 export PATH="$BREW_HOME:$PATH"
 
 # go

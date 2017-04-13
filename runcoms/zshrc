@@ -44,6 +44,6 @@ bindkey "^R" history-incremental-search-backward
 # autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh  ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-EDITOR='mvim -f'
-VISUAL='mvim -f'
+EDITOR='nvim'
+VISUAL='nvim'
 
