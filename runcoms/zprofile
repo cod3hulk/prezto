@@ -17,7 +17,7 @@ fi
 # Editors
 #
 
-export EDITOR='/usr/local/bin/vim'
+export EDITOR='nvim'
 export VISUAL="$EDITOR"
 export PAGER='less'
 
