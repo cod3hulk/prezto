@@ -48,16 +48,27 @@ alias sftp='noglob sftp'
 # Define general aliases.
 alias _='sudo'
 alias b='${(z)BROWSER}'
-alias cp="${aliases[cp]:-cp} -i"
+
+alias diffu="diff --unified"
 alias e='${(z)VISUAL:-${(z)EDITOR}}'
-alias ln="${aliases[ln]:-ln} -i"
 alias mkdir="${aliases[mkdir]:-mkdir} -p"
-alias mv="${aliases[mv]:-mv} -i"
 alias p='${(z)PAGER}'
 alias po='popd'
 alias pu='pushd'
-alias rm="${aliases[rm]:-rm} -i"
+alias sa='alias | grep -i'
 alias type='type -a'
+
+# Safe ops. Ask the user before doing anything destructive.
+alias rmi="${aliases[rm]:-rm} -i"
+alias mvi="${aliases[mv]:-mv} -i"
+alias cpi="${aliases[cp]:-cp} -i"
+alias lni="${aliases[ln]:-ln} -i"
+if zstyle -T ':prezto:module:utility' safe-ops; then
+  alias rm='rmi'
+  alias mv='mvi'
+  alias cp='cpi'
+  alias ln='lni'
+fi
 
 # ls
 if is-callable 'dircolors'; then
@@ -71,9 +82,9 @@ if is-callable 'dircolors'; then
       eval "$(dircolors --sh)"
     fi
 
-    alias ls="$aliases[ls] --color=auto"
+    alias ls="${aliases[ls]:-ls} --color=auto"
   else
-    alias ls="$aliases[ls] -F"
+    alias ls="${aliases[ls]:-ls} -F"
   fi
 else
   # BSD Core Utilities
@@ -84,9 +95,9 @@ else
     # Define colors for the completion system.
     export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
 
-    alias ls='ls -G'
+    alias ls="${aliases[ls]:-ls} -G"
   else
-    alias ls='ls -F'
+    alias ls="${aliases[ls]:-ls} -F"
   fi
 fi
 
@@ -101,6 +112,14 @@ alias lt='ll -tr'        # Lists sorted by date, most recent last.
 alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 alias sl='ls'            # I often screw this up.
+
+# Grep
+if zstyle -t ':prezto:module:utility:grep' color; then
+  export GREP_COLOR='37;45'           # BSD.
+  export GREP_COLORS="mt=$GREP_COLOR" # GNU.
+
+  alias grep="${aliases[grep]:-grep} --color=auto"
+fi
 
 # Mac OS X Everywhere
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -135,17 +154,22 @@ fi
 alias df='df -kh'
 alias du='du -kh'
 
-if (( $+commands[htop] )); then
-  alias top=htop
-else
+if [[ "$OSTYPE" == (darwin*|*bsd*) ]]; then
   alias topc='top -o cpu'
   alias topm='top -o vsize'
+else
+  alias topc='top -o %CPU'
+  alias topm='top -o %MEM'
 fi
 
 # Miscellaneous
 
 # Serves a directory via HTTP.
-alias http-serve='python -m SimpleHTTPServer'
+if (( $+commands[python3] )); then
+  alias http-serve='python3 -m http.server'
+else
+  alias http-serve='python -m SimpleHTTPServer'
+fi
 
 #
 # Functions
@@ -183,5 +207,29 @@ function find-exec {
 
 # Displays user owned processes status.
 function psu {
-  ps -U "${1:-$USER}" -o 'pid,%cpu,%mem,command' "${(@)argv[2,-1]}"
+  ps -U "${1:-$LOGNAME}" -o 'pid,%cpu,%mem,command' "${(@)argv[2,-1]}"
+}
+
+# Enables globbing selectively on path arguments.
+# Globbing is enabled on local paths (starting in '/' and './') and disabled
+# on remote paths (containing ':' but not starting in '/' and './'). This is
+# useful for programs that have their own globbing for remote paths.
+# Currently, this is used by default for 'rsync' and 'scp'.
+# Example:
+#   - Local: '*.txt', './foo:2017*.txt', '/var/*:log.txt'
+#   - Remote: user@localhost:foo/
+#
+# NOTE: This function is buggy and is not used anywhere until we can make sure
+# it's fixed. See https://github.com/sorin-ionescu/prezto/issues/1443 and
+# https://github.com/sorin-ionescu/prezto/issues/1521 for more information.
+function noremoteglob {
+  local -a argo
+  local cmd="$1"
+  for arg in ${argv:2}; do case $arg in
+    ( ./* ) argo+=( ${~arg} ) ;; # local relative, glob
+    (  /* ) argo+=( ${~arg} ) ;; # local absolute, glob
+    ( *:* ) argo+=( ${arg}  ) ;; # remote, noglob
+    (  *  ) argo+=( ${~arg} ) ;; # default, glob
+  esac; done
+  command $cmd "${(@)argo}"
 }
