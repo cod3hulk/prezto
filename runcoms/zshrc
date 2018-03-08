@@ -33,21 +33,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.exports"  ]]; then
     source "${ZDOTDIR:-$HOME}/.exports"
 fi
 
-# exports
+# bindkeys
 if [[ -s "${ZDOTDIR:-$HOME}/.bindkeys"  ]]; then
     source "${ZDOTDIR:-$HOME}/.bindkeys"
 fi
 
-# exports
+# inits
 if [[ -s "${ZDOTDIR:-$HOME}/.inits"  ]]; then
     source "${ZDOTDIR:-$HOME}/.inits"
 fi
 
-
-# autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh  ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-
-EDITOR='nvim'
-VISUAL='nvim'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
