@@ -33,12 +33,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.exports"  ]]; then
     source "${ZDOTDIR:-$HOME}/.exports"
 fi
 
-# vi key bindings
-bindkey -M viins 'jj' vi-cmd-mode
-bindkey "^R" history-incremental-search-backward
+# exports
+if [[ -s "${ZDOTDIR:-$HOME}/.bindkeys"  ]]; then
+    source "${ZDOTDIR:-$HOME}/.bindkeys"
+fi
 
-# clear screen rebind
-bindkey '^[l' clear-screen
+# exports
+if [[ -s "${ZDOTDIR:-$HOME}/.inits"  ]]; then
+    source "${ZDOTDIR:-$HOME}/.inits"
+fi
 
 
 # autojump

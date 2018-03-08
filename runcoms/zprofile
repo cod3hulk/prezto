@@ -80,14 +80,14 @@ fi
 export GRADLE_OPTS="-Dorg.gradle.daemon=true -Dorg.gradle.parralel-threads=4 -Dorg.gradle.jvmargs='-Xmx4096m -XX:MaxPermSize=4096m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -Djava.awt.headless=true'"
 
 # jenv
-eval "$(jenv init -)"
-JENV_HOME="$HOME/.jenv/bin"
-export PATH="$JENV_HOME:$PATH"
+#eval "$(jenv init -)"
+#JENV_HOME="$HOME/.jenv/bin"
+#export PATH="$JENV_HOME:$PATH"
 
 # rbenv
-eval "$(rbenv init -)"
-RBENV_HOME="$HOME/.rbenv/shims"
-export PATH="$RBENV_HOME:$PATH"
+#eval "$(rbenv init -)"
+#RBENV_HOME="$HOME/.rbenv/shims"
+#export PATH="$RBENV_HOME:$PATH"
 
 # brew
 BREW_HOME="$HOME/usr/local/bin"
