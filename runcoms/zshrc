@@ -32,6 +32,9 @@ fi
 if [[ -s "${ZDOTDIR:-$HOME}/.exports"  ]]; then
     source "${ZDOTDIR:-$HOME}/.exports"
 fi
+if [[ -s "${ZDOTDIR:-$HOME}/.exports.local"  ]]; then
+    source "${ZDOTDIR:-$HOME}/.exports.local"
+fi
 
 # bindkeys
 if [[ -s "${ZDOTDIR:-$HOME}/.bindkeys"  ]]; then
